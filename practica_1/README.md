@@ -13,7 +13,6 @@ A continuación se mostrará el proceso de instalación y el correcto funcionami
 
 La instalación de la máquina virtual Ubuntu 16.04 se ha realizado siguiendo los pasos por defecto de la instalación. Para la segunda máquina he optado por clonar la máquina instalada. Con el objetivo de crear una red local donde pueda trabajar con las dos máquinas y el host he creado con ayuda de la interfaz de virtual box con ip **192.168.56.0**. Se han editado el archivo */etc/network/interfaces* de ambas máquinas para asignarles una ip estática dentro de la red (**192.168.56.2** y **192.168.56.3** respectivamente).
 
-[img]
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/img/pract_1_swap_3.png)
 
 Comprobamos que tenemos conectividad entre las dos máquinas haciendo uso del comando ping.
