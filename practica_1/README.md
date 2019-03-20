@@ -31,8 +31,9 @@ Para la instalación de Apache (junto a MySQL y Php) hemos seleccionado la opci�
 
 Para comprobar que el servicio funciona correctamente vamos a realizar una petición desde una máquina al servidor web de la otra y viceversa usando para ello el comando Curl para comprobar que tenemos un correcto acceso entre las máquinas.
 
-[img]
-[img]
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica_1/img/pract_1_swap_8.png)
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica_1/img/pract_1_swap_9.png)
 
 
 ## Instalación y configuración de Ssh
