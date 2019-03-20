@@ -40,5 +40,6 @@ Para comprobar que el servicio funciona correctamente vamos a realizar una petic
 
 Para la instalación de openssh-server hemos seleccionado junto a la instalación del servidor LAMP la opción de instalar el servidor OpenSSH, el cual nos instalá el servidor necesario para poder conectarnos a la máquina usando ssh. Comprobamos que podamos acceder desde las dos máquinas mediante ssh.
 
-[img]
-[img]
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica_1/img/pract_1_swap_10.png)
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica_1/img/pract_1_swap_11.png)
