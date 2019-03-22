@@ -13,7 +13,7 @@ cp que nos permite copiar archivos de forma segura remotamente. A continuación 
 
 Ejecutamos el comando **tar** en la máquina 1 (**192.168.56.2**) y mediante un pipeline se lo pasamos al comando ssh que establece la conexión con la máquina 2 (**192.168.56.3**)
 
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/tree/master/practica2/img/pract_2_swap_1.png)
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_1.png)
 
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/tree/master/practica2/img/pract_2_swap_2.png)
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_2.png)
 
