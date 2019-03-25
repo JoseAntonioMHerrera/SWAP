@@ -22,7 +22,11 @@ Aqui vemos como en la carpeta *home/* del usuario de la segunda máquina se ha c
 
 ## Clonado de archivos con rsync
 
-En este apartado vamos a realizar un clonado del directorio *www/* de la máquina 1 desde la máquina 2 para que su contenido sea exactamente el mismo. El comando que vamos a usar se llama **rsync** y consta de los siguientes parametros:
+En este apartado vamos a realizar un clonado del directorio *www/* de la máquina 1 desde la máquina 2 para que su contenido sea exactamente el mismo. En el caso de que no lo tuvieramos instalado, lo instalamos usando el comando **sudo apt-get install rsync**. Otra cosa que deberíamos realizar para el correcto funcionamiento del ejercicio, si no estamos usando el usuario root es establecer los permisos apropiados para poder manejar el borrado y la edición.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_4.png)
+
+El comando que vamos a usar se llama **rsync** y consta de los siguientes parametros:
 
   - -avz: Respectivamente indican que se trata de archivos, verbose y que se comprima para la transferencia a la máquina objetivo.
   - -e: permite seleccionar la shell remota que queremos usar con el comando rsync. En nuestro caso será ssh.
@@ -30,7 +34,7 @@ En este apartado vamos a realizar un clonado del directorio *www/* de la máquin
   
   A continuación se muestran imagenes mostrando el resultado del comando rsync.
   
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_3.png)
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_5.png)
 
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_4.png)
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_6.png)
   
