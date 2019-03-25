@@ -64,4 +64,5 @@ Ahora, podemos acceder mediante ssh sin tener que introducir la contraseña.
 
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_13.png)
 
-** Automatizando las tareas: Crontab
+
+## Automatizando las tareas: Crontab
