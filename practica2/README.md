@@ -28,13 +28,19 @@ En este apartado vamos a realizar un clonado del directorio *www/* de la máquin
 
 El comando que vamos a usar se llama **rsync** y consta de los siguientes parametros:
 
-  - -avz: Respectivamente indican que se trata de archivos, verbose y que se comprima para la transferencia a la máquina objetivo.
-  - -e: permite seleccionar la shell remota que queremos usar con el comando rsync. En nuestro caso será ssh.
-  - [ip objetivo]@[directorio objetivo] [directorio]: indicamos la ip de la máquina objetivo y seguido de @ el directorio objetivo a clonar. Por último, el directorio donde queremos clonarlo.
+  - **-avz**: Respectivamente indican que se trata de archivos, verbose y que se comprima para la transferencia a la máquina objetivo.
+  - **-e**: permite seleccionar la shell remota que queremos usar con el comando rsync. En nuestro caso será ssh.
+  - **[ip_objetivo]@[directorio_objetivo] [directorio]**: indicamos la ip de la máquina objetivo y seguido de @ el directorio objetivo a clonar. Por último, el directorio donde queremos clonarlo.
   
   A continuación se muestran imagenes mostrando el resultado del comando rsync.
   
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_5.png)
 
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_6.png)
+En el siguiente caso hemos hecho uso de la opción **--delete** la cual nos permite además de mantener los archivos actualizados mantener también la estructura del directorio, eliminando los ficheros o directorios que se hayan eliminado en la máquina objetivo. Otra opción que se ha incluido es la de **--exclude** pudiendo así seleccionar una serie de directorios/ficheros con la opción **--exclude=/[directorio]** los cuales no se clonarán.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_8.png)
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_9.png)
+
+
   
