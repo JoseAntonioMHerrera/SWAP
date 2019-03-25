@@ -15,5 +15,22 @@ Ejecutamos el comando **tar** en la máquina 1 (**192.168.56.2**) y mediante un 
 
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_1.png)
 
+Aqui vemos como en la carpeta *home/* del usuario de la segunda máquina se ha copiado el archivo tar.
+
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_2.png)
 
+
+## Clonado de archivos con rsync
+
+En este apartado vamos a realizar un clonado del directorio *www/* de la máquina 1 desde la máquina 2 para que su contenido sea exactamente el mismo. El comando que vamos a usar se llama **rsync** y consta de los siguientes parametros:
+
+  - -avz: Respectivamente indican que se trata de archivos, verbose y que se comprima para la transferencia a la máquina objetivo.
+  - -e: permite seleccionar la shell remota que queremos usar con el comando rsync. En nuestro caso será ssh.
+  - [ip objetivo]@[directorio objetivo] [directorio]: indicamos la ip de la máquina objetivo y seguido de @ el directorio objetivo a clonar. Por último, el directorio donde queremos clonarlo.
+  
+  A continuación se muestran imagenes mostrando el resultado del comando rsync.
+  
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_3.png)
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_4.png)
+  
