@@ -2,7 +2,7 @@
 ## Introducción
 
 En esta práctica veremos como clonar archivos de una máquina a otra, con el objetivo de mantener una duplicación de datos que se mantenga 
-actualizada a lo largo del tiempo de forma automática (esto es, sin acción directa del administrador). Primero Para poder realizar esta tarea con
+actualizada a lo largo del tiempo de forma automática (esto es, sin acción directa del administrador). Para poder realizar esta tarea con
 éxito tendremos que configurar el ssh para que pueda conectarse de una máquina a otra sin que nos solicite la contraseña.
 
 ## Copia de archivos manual
@@ -55,3 +55,13 @@ Vamos a configurar la identificación en ssh mediante claves pública y privada 
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_10.png)
   
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_11.png)
+
+En la carpeta *~/.ssh/* se ha creado el archivo *authorized_keys*
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_12.png)
+
+Ahora, podemos acceder mediante ssh sin tener que introducir la contraseña.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_13.png)
+
+** Automatizando las tareas: Crontab
