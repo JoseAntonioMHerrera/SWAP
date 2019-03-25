@@ -43,4 +43,15 @@ En el siguiente caso hemos hecho uso de la opción **--delete** la cual nos perm
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_9.png)
 
 
+## Indetificación ssh mediante claves pública/privada
+
+Vamos a configurar la identificación en ssh mediante claves pública y privada desde la máquina 2 a la máquina 1 para no tener que introducir la contraseña cada vez que queramos acceder mediante ssh. Para ello vamos a usar los siguientes comandos:
+
+  - **ssh-keygen**: usaremos este comando para generar las claves pública y privada. Las opciones **-b** y **-t**  nos permitirán, respectivamente, seleccionar el número de bits de la clave a crear y el típo de key a crear.
+  - **ssh-copy-id**: este comando nos permite copiar nuestra clave pública en el servidor destino. Esta clave se copiará al archivo *~/.ssh/authorized_keys*. Si no existiera, se crearía en el momento de la copia.
   
+  A continuación se muestra el creado de claves y la copía de la clave pública.
+  
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_10.png)
+  
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_11.png)
