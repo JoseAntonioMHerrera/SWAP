@@ -65,4 +65,10 @@ Ahora, podemos acceder mediante ssh sin tener que introducir la contraseña.
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_13.png)
 
 
-## Automatizando las tareas: Crontab
+## Automatizando las tareas: crontab
+
+Como paso final para poder automatizar el clonado de directorios entre máquinas, vamos a añadir una nueva tarea que se ejecute al inicio de cada hora para que mantenga los directorios actualizados. Para ello vamos a editar el archivo */etc/crontab* en la máquina 2 añadiendo la última linea de la siguiente imagen.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_14.png)
+
+Los primeros cinco parametros de la linea reflejan los minutos, horas, día del mes, mes y día de la semana. los cuales marcarán la rutina de activación de la tarea. En nuestro caso ponemos un 0 en los minutos, y en el resto añadimos un * para indicar todos los posibles valores. La orden es la misma que hemos visto en secciones anteriores.
