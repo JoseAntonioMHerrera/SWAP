@@ -23,65 +23,62 @@ primero tendremos que desactivar cualquier otro servicio que pueda estar haciend
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_2.png)
 
 
-La configuración de nginx para que funcione como un balanceador de carga entre los dos servidores web deberemos editar el archivo **/etc/nginx/conf.d/default.conf**
-con la siguiente configuración.
+La configuración de nginx para que funcione como un balanceador de carga entre los dos servidores web deberemos editar el archivo **/etc/nginx/conf.d/default.conf** con la siguiente configuración.
 
 
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_3.png)
 
 
 El archivo de configuración se divide en:
-  - **upstream**: Aqui definiremos un nombre para el grupo de servidores que vamos a balancear. La sintaxis es **server [ip_maquina objetivo]**
 
-## Clonado de archivos con rsync
+  - **upstream**: Aqui definiremos un nombre para el grupo de servidores que vamos a balancear. Por cada servidor añadiremos la siguiente sintaxis es **server [ip_maquina objetivo]**.
 
-En este apartado vamos a realizar un clonado del directorio *www/* de la máquina 1 desde la máquina 2 para que su contenido sea exactamente el mismo. En el caso de que no lo tuvieramos instalado, lo instalamos usando el comando **sudo apt-get install rsync**. Otra cosa que deberíamos realizar para el correcto funcionamiento del ejercicio, si no estamos usando el usuario root es establecer los permisos apropiados para poder manejar el borrado y la edición.
+  - **server**: En esta sección nos encargaremos de configurar propiamente el funcionamiento del balanceador, añadiendo el upstream que debe usar, el protocolo o como debe editar la cabecera Connection. También se define la ruta hacia los log de nginx.
 
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_4.png)
-
-El comando que vamos a usar se llama **rsync** y consta de los siguientes parametros:
-
-  - **-avz**: Respectivamente indican que se trata de archivos, verbose y que se comprima para la transferencia a la máquina objetivo.
-  - **-e**: permite seleccionar la shell remota que queremos usar con el comando rsync. En nuestro caso será ssh.
-  - **[ip_objetivo]@[directorio_objetivo] [directorio]**: indicamos la ip de la máquina objetivo y seguido de @ el directorio objetivo a clonar. Por último, el directorio donde queremos clonarlo.
-  
-  A continuación se muestran imagenes mostrando el resultado del comando rsync.
-  
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_5.png)
-
-En el siguiente caso hemos hecho uso de la opción **--delete** la cual nos permite además de mantener los archivos actualizados mantener también la estructura del directorio, eliminando los ficheros o directorios que se hayan eliminado en la máquina objetivo. Otra opción que se ha incluido es la de **--exclude** pudiendo así seleccionar una serie de directorios/ficheros con la opción **--exclude=/[directorio]** los cuales no se clonarán.
-
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_8.png)
-
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_9.png)
+Ahora comprobamos el funcionamiento de nginx usando el comando curl lanzando una petición a la ip **192.168.56.4**
 
 
-## Indetificación ssh mediante claves pública/privada
-
-Vamos a configurar la identificación en ssh mediante claves pública y privada desde la máquina 2 a la máquina 1 para no tener que introducir la contraseña cada vez que queramos acceder mediante ssh. Para ello vamos a usar los siguientes comandos:
-
-  - **ssh-keygen**: usaremos este comando para generar las claves pública y privada. Las opciones **-b** y **-t**  nos permitirán, respectivamente, seleccionar el número de bits de la clave a crear y el típo de key a crear.
-  - **ssh-copy-id**: este comando nos permite copiar nuestra clave pública en el servidor destino. Esta clave se copiará al archivo *~/.ssh/authorized_keys*. Si no existiera, se crearía en el momento de la copia.
-  
-  A continuación se muestra el creado de claves y la copía de la clave pública.
-  
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_10.png)
-  
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_11.png)
-
-En la carpeta *~/.ssh/* se ha creado el archivo *authorized_keys*
-
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_12.png)
-
-Ahora, podemos acceder mediante ssh sin tener que introducir la contraseña.
-
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_13.png)
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_6.png)
 
 
-## Automatizando las tareas: crontab
+Vemos que algo no funciona, ya que nos muestra el index.html que habíamos definido para el balanceador de carga. Esto puede ocurrir si en el archivo de configuración **/etc/nginx/nginx.conf** esta descomentada la linea **include /etc/nginx/sites-enabled/**. Comentamos la linea y reiniciamos el servicio nginx.
 
-Como paso final para poder automatizar el clonado de directorios entre máquinas, vamos a añadir una nueva tarea que se ejecute al inicio de cada hora para que mantenga los directorios actualizados. Para ello vamos a editar el archivo */etc/crontab* en la máquina 2 añadiendo la última linea de la siguiente imagen.
 
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica2/img/pract_2_swap_14.png)
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_5.png)
 
-Los primeros cinco parametros de la linea reflejan los minutos, horas, día del mes, mes y día de la semana. los cuales marcarán la rutina de activación de la tarea. En nuestro caso ponemos un 0 en los minutos, y en el resto añadimos un * para indicar todos los posibles valores. La orden es la misma que hemos visto en secciones anteriores.
+
+Vamos a intentar de nuevo conseguir una petición de los servidores finales pasando a través del balanceador.
+
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_7.png)
+
+
+Vemos que si que nos esta balanceando correctamente entre un servidor y otro. Por defecto, el algoritmo de balanceo usado es Round-Robin. Si quisieramos usar por ejemplo un algoritmo basado en ponderación, tendríamos que añadir al archivo de configuración **default.conf** lo siguiente.
+
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_9.png)
+
+
+Aqui estamos definiendo sobre la ip **192.168.56.2** el doble de "peso" que sobre la ip **192.168.56.3**. Así, la primera máquina recibira de media el doble de peticiones que la segunda máquina.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_10.png)
+
+## Instalación de HAProxy
+
+Haproxy será el segundo balanceador que instalaremos. Para ello haremos uso del comando **apt-get** de nuevo.
+
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_11.png)
+
+
+Al igual que con nginx tendremos que editar el archivo de configuración **/etc/haproxy/haproxy.cfg**. Añadiremos la siguiente configuración:
+
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_13.png)
+
+
+En el archivo configuración reservamos el puerto 80 para esperar las conexiones entrantes y definimos el nombre del grupo de servidores que vamos a usar. En este caso servers define el grupo de servidores, en el cual estan los dos servidores apache que tenemos sirviendo paginas web. Por cada uno añadimos la ip y el puerto. 
+
+Reiniciamos el servicio HAProxy y comprobamos que balancee correctamente las peticiones.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_15.png)
