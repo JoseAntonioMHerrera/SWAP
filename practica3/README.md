@@ -82,3 +82,10 @@ En el archivo configuración reservamos el puerto 80 para esperar las conexiones
 Reiniciamos el servicio HAProxy y comprobamos que balancee correctamente las peticiones.
 
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_15.png)
+
+## Comparación: Nginx vs HAProxy
+
+En esta sección vamos a realizar una comparativa de tiempos entre los dos balanceadores de carga frente a **20000** peticiones en grupos de **500** de forma concurrente. Para ello haremos uso de la herramienta **Apache Benchmark**. Primero sobrecargaremos el balanceador Nginx. A continuación vemos el rendimiento del servidor con los parametros de carga mencionados antes:
+
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_16.png)
