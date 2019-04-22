@@ -93,3 +93,10 @@ En esta sección vamos a realizar una comparativa de tiempos entre los dos balan
 Ahora paramos el servicio **nginx** y arrancamos el servicio **haproxy**. Volvemos a lanzar el comando **ab**.
 
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_17.png)
+
+Viendo el analisis de apache benchmark en cada caso podemos ver:
+
+  - Número de peticiones por segundo: en el caso de **nginx**, el número de peticiones por segundo que ha servido es de 
+**1390.97** frentre a las **2576.25** peticiones de HAProxy. Este último ha conseguido servir casi el doble de peticiones por segundo.
+  - Tiempo medio de respuesta por petición: para **nginx**, la media ha sido de **359.462 ms** y **0.719 ms** para peticiones dentro del mismo grupo concurrente. En cambio para **haproxy** la media ha sido de **194.081 ms** y **0.388 ms** dentro del grupo concurrente. De nuevo podemos observar que **haproxy** supera en tiempo de respuesta velocidad a nginx.
+  
