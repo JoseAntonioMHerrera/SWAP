@@ -89,3 +89,7 @@ En esta sección vamos a realizar una comparativa de tiempos entre los dos balan
 
 
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_16.png)
+
+Ahora paramos el servicio **nginx** y arrancamos el servicio **haproxy**. Volvemos a lanzar el comando **ab**.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_17.png)
