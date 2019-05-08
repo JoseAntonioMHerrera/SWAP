@@ -31,7 +31,13 @@ Cuando ejecutamos el comando anteriormente explicado, se nos pedirá que rellene
 
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_3.png)
 
+Tanto la clave privada como el certificado deberán ser el mismo tanto en los servidores web como en el balanceador. Se recomienda el uso de alguna herramienta como **rsync** para copiar estos dos archivos en el resto de máquinas. Una vez hecho esto, y suponiendo que hayamos habilitado también el módulo ssl también en la segunda máquina servidora, vamos a proceder a editar el archivo */etc/apache2/sites-avaible/default-ssl.conf*. Aquí añadiremos la ruta a nuestro certificado autofirmado.
 
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_4.png)
+
+Un último paso será activar el archivo *default-ssl.conf* usando la herramienta **a2ensite**. Esta orden requiere permisos de usuario.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_5.png)
 
 
 Una vez instalado comprobamos que el servicio esta activo. No hay que olvidar que el servicio nginx hace uso  del puerto 80, asi que 
