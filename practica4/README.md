@@ -1,19 +1,37 @@
-# Práctica 3 - SWAP
+# Práctica 4 - SWAP
 ## Introducción
 
-En esta práctica vamos a configurar dos balanceadores de carga, nginx y haproxy, que repartan la carga entre dos servidores web apache que hemos
-configurado en anteriores practicas. Para ello Procederemos a su descarga y configuración. También realizaremos una comparativa entre
-estos dos balanceadores cuando son sometidos a una carga alta de peticiones, usando para ello la herramienta ab que simulará una cantidad
-lo suficientemente importante de peticiones sobre los dos balanceadores de carga.
+En esta práctica vamos a configurar un certificado autofirmado para usarlo en los dos servidores web finales y en el balanceador, con el fin de que los usuarios puedan conectarse mediante https. Por otra parte, en uno de los servidores web finales vamos a crear un servicio que se ejecute en el arranque del servidor y que configure unas reglas de firewall que solo permitan el acceso mediante ssh y acepte peticiones en los puertos 80 y 443 (tanto peticiones entrantes como salientes) y bloquee el resto de tráfico.
 
-## Instalación de Nginx
+## Creación de un certificado autofirmado
 
-En esta sección vamos a realizar la instalación, configuración y prueba del balanceador de carga Nginx. Para la instalación recurriremos
-al comando apt-get. La nueva máquina tendra asignada la ip **192.168.56.4** siendo la de los servidores web **192.168.56.2** y
-**192.168.56.3**.
+El primer paso es habilitar el módulo de apache de ssl, usando la orden **a2enmod**.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_1.png)
+
+Este módulo permitirá a apache usar las conexiones encriptadas con el protocolo ssl. Tras activar el módulo, debemos apagar y volver a encender el servicio de apache. Para la creación del certificado autofirmado vamos a usar la herramienta **open-ssl**.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_2.png)
+
+La sintaxis del comando es la siguiente:
+
+  - **req -x509**: petición de creación de un certificado (Certificate Signing Request). La opción -x509 representa el estandar para infraestructuras de clave pública, esto es certíficados con clavés públicas.
+  
+  - **-nodes**: si se especifica y una clave privada fuera a ser creada, esta no se encriptaría.
+  
+  - **-days n**: si se usa, establece el número de días que el certificado será valido como tal.
+  
+  - **-newkey rsa:2048**: crea un certificado y una nueva clave privada. El segundo parametro establece el tipo de clave y el número de bits de la clave.
+  
+  - **-keyout [path]**: ruta donde se guardará la nueva clave privada recién creada.
+  
+  - **-out [path]**: ruta donde se guardará el nuevo certificado recién creado.
+  
+Cuando ejecutamos el comando anteriormente explicado, se nos pedirá que rellenemos los datos del certificado. Estos son tales como país y provincia, institución a la que representa el certificado, etc... En nuestro caso hemos rellenado todo con swap, salvo el correo electrónico que será el mío propio.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_3.png)
 
 
-![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica3/img/swap3_1.png)
 
 
 Una vez instalado comprobamos que el servicio esta activo. No hay que olvidar que el servicio nginx hace uso  del puerto 80, asi que 
