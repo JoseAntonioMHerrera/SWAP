@@ -38,3 +38,17 @@ Tanto la clave privada como el certificado deberán ser el mismo tanto en los se
 Un último paso será activar el archivo *default-ssl.conf* usando la herramienta **a2ensite**. Esta orden requiere permisos de usuario.
 
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_5.png)
+
+Ahora al realizar una petición a la ip **192.168.56.2** usando el protocolo https nos aparecerá un aviso al intentar acceder a un sitio con un certificado autofirmado.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_6.png)
+
+Este mismo proceso lo aplicaremos en el segundo servidor apache de la máquina 2. Por otra parte, en el servidor balanceador, vamos a realizar la configuración de nginx. Para ello, en el archivo */etc/nginx/conf.d/default.conf*. El archivo debe quedar de la siguiente manera:
+
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_9.png)
+
+
+De nuevo, accediendo usando el protocolo seguro a la ip **192.168.56.4** (la ip del balanceador) nos saldrá la misma advertencia que en el paso anterior.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_10.png)
