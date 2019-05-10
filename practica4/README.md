@@ -57,12 +57,12 @@ De nuevo, accediendo usando el protocolo seguro a la ip **192.168.56.4** (la ip 
 
 En esta sección vamos a mejorar la seguridad de uno de los servidores finales aplicando reglas firewall para permitir solo la entrada y salida por los puertos 22, 80 y 443. Además, permitiremos todas las conexiones desde localhost. Como paso previo, primero borraremos todas las reglas del firewall para que solo esten activas las hemos mencionado anteriormente. El comando a usar es **iptables**.
 
-[!image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_17.png)
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_17.png)
 
 Para hacer estas reglas persistentes vamos a crear un servicio que ejecute el script de la imagen anterior al arrancar el servidor. Para ello nos haremos uso de **systemd**. Primero crearemos el servicio que se encargará de ejecutar el script:
 
-[!image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_21.png)
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_21.png)
 
 Si el script (que aqui ubicamos en la carpeta */sbin/*) no tuviera permisos para su ejecución habría que proporcionarselos. Una vez creado el servicio, lo activamos con **systemctl** y hacemos que se ejecute al arrancar el sistema con la opción **enable**. 
 
-[!image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_18.png)
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica4/img/SWAP4_18.png)
