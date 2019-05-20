@@ -1,9 +1,27 @@
 # Práctica 5 - SWAP
 ## Introducción
 
-En esta práctica vamos a configurar un certificado autofirmado para usarlo en los dos servidores web finales y en el balanceador, con el fin de que los usuarios puedan conectarse mediante https. Por otra parte, en uno de los servidores web finales vamos a crear un servicio que se ejecute en el arranque del servidor y que configure unas reglas de firewall que solo permitan el acceso mediante ssh y acepte peticiones en los puertos 80 y 443 (tanto peticiones entrantes como salientes) y bloquee el resto de tráfico.
+En esta práctica vamos a ver varias opciones para el mantenimiento de una base de datos replicada en un segundo servidor. Los primeros acercamientos consistirán en un replicado manual, extrayendo la base de datos elegida, copiandola en la máquina destino y reconstruyendola allí. Después refinaremos este proceso automatizándolo con una jerarquía maestro-esclavo. 
 
-## Creación de un certificado autofirmado
+## Mysql: creación de tablas e introducción de datos
+
+Primeramente vamos a crear una tabla y a introducir una fila para poder tener algo que replicar en la máquina destino.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_1.png)
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_2.png)
+
+En la siguiente sección vamos a proceder a volcar la base de datos a la que hemos llamado contactos.
+
+## Mysqldump: volcado de la base de datos
+
+El comando que usaremos para volcar la base de datos será **mysqldump**. Hay que tener en cuenta que durante el proceso de replicación tendríamos que asegurarnos de que durante ese tiempo no se ha insertado ni eliminado nada. Sería una buena idea bloquear las tablas primero.
+
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP_5_3.png)
+
+
+## Jerarquía Maestro-Esclavo
 
 El primer paso es habilitar el módulo de apache de ssl, usando la orden **a2enmod**.
 
