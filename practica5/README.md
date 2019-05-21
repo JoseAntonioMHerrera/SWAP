@@ -45,4 +45,28 @@ La jerarquía Maestro-Esclavo establece una máquina como maestro y otra o varia
 
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_9.png)
 
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_10.png)
+
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_11.png)
+
+Hemos descomentado (o añadido en su defecto) la linea que nos permite recibir conexiones desde localhost, la ruta hacia los archivos donde se almacenarán los logs y la id del servidor. Este último campo variará a la hora de configurar la máquina esclavo, dandole un id distinto. En nuestro caso le daremos el id 2.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_14.png)
+
+Guardamos los ficheros y reiniciamos mysql en ambas máquinas.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_13.png)
+
+Ahora crearemos en la máquina maestro el usuario que la máquina esclavo usará para conectarse a la base de datos y así replicar el contenido elegido.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_15.png)
+
+Ahora mostramos información de los archivos de log binarios de la máquina maestro que mas adelante usaremos para realizar la configuración en mysql de la parte del esclavo.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_16.png)
+
+En el esclavo, vamos a cambiar el maestro por la ip de la máquina 1, proporcionandole también el usuario que acabamos de crear así como información sobre los logs de la máquina maestro. Después lanzamos el esclavo.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_17.png)
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_18.png)
