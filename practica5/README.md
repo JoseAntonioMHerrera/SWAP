@@ -70,3 +70,11 @@ En el esclavo, vamos a cambiar el maestro por la ip de la máquina 1, proporcion
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_17.png)
 
 ![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_18.png)
+
+Si todo ha ido bien, usando el comando SHOW SLAVE STATUS\G nos debería aparecer la siguiente sentencia con un valor distinto a NULL.
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_21.png)
+
+Con esa última comprobación de que todo funciona bien, ahora podríamos insertar una tupla en la máquina maestro y automaticamente se replicará en la máquina esclavo 
+
+![image](https://github.com/JoseAntonioMHerrera/SWAP_2019/blob/master/practica5/img/SWAP5_22.png)
